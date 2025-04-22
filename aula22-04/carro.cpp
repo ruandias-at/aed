@@ -8,39 +8,39 @@ using namespace std;
 // Declaração da classe Carro
 class Carro {
     private:
-        string fabricante;
         string marca;
+        string modelo;
         int ano;
         int velocidade;
         vector<string> acessorio;
 
     public:
-        Carro(string fabricante, string marca, int ano) {
-            this->fabricante = fabricante;
+        Carro(string marca, string modelo, int ano) {
             this->marca = marca;
+            this->modelo = modelo;
             this->ano = ano;
             this->velocidade = 0;
             this->acessorio.push_back("Macaco");
         }
 
-        //getFabricante
-        string getFabricante() {
-            return fabricante;
-        }
-
-        //setFabricante
-        void setFabricante(string fabricante) {
-            this->fabricante = fabricante;
-        }
-
-        //getMarca
-        string getMarca() {
+        //getmarca
+        string getmarca() {
             return marca;
         }
 
-        //setMarca
-        void setMarca(string marca) {
+        //setmarca
+        void setmarca(string marca) {
             this->marca = marca;
+        }
+
+        //getmodelo
+        string getmodelo() {
+            return modelo;
+        }
+
+        //setmodelo
+        void setmodelo(string modelo) {
+            this->modelo = modelo;
         }
 
         //getAno
@@ -65,8 +65,8 @@ class Carro {
         }
 
         void exibirInfo() {
-            cout << "Fabricante: " << this->fabricante << endl;
             cout << "Marca: " << this->marca << endl;
+            cout << "Modelo: " << this->modelo << endl;
             cout << "Ano: " << this->ano << endl;
             cout << "Velocidade: " << this->velocidade << endl;
             cout << "Acessorios: " << endl;
@@ -90,4 +90,7 @@ int main() {
     c1.adicionarAcessorio("Ar condicionado");
     c1.adicionarAcessorio("Direção hidráulica");
     c1.exibirInfo();
+
+    Carro *c2 = new Carro("Chevrolet", "Corsa", 2006);
+    c2->exibirInfo();
 }
