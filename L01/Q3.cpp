@@ -1,23 +1,32 @@
-#include <iostream>
-#include <string>
-#include <vector>
-#include <locale>
+/*
+Nome: Ruan Dias Alves Teixeira
+Matrícula: 242014471
+Questão: L01Q02
+*/
+//Importando todas as bibliotecas necessárias para a questão
+#include <iostream> //Importa os comandos para entrada e saída de dados
+#include <string> //Importa a biblioteca de strings
+#include <vector> //Importa a biblioteca de vetores
+#include <locale> //Importa a biblioteca de locale, para definir o local e permitir o uso de acentos
 
-using namespace std;
+using namespace std; //Facilita para que não precise escrever std antes de usar comandos
 
+//Definindo a classe Pessoa, que possui os atributos privados identificacao, nome e idade
 class Pessoa {
     private:
         string identificacao;
         string nome;
         int idade;
-
+    
     public:
+        //Constructor da classe Pessoa, que inicializa os atributos com os valores passados como parâmetro
         Pessoa(string identificacao, string nome, int idade) {
             this->identificacao = identificacao;
             this->nome = nome;
             this->idade = idade;
         }
 
+        //Métodos setters e getters para cada atributo da classe Pessoa, permitindo a manipulação dos dados 'privados'
         void setIdentificacao(string identificacao) {
             this->identificacao = identificacao;
         }
@@ -42,6 +51,7 @@ class Pessoa {
             return idade;
         }
 
+        //Método que exibe as informações da classe pessoa
         void exibirInfo() {
             cout << "Identificacao: " << identificacao << endl;
             cout << "Nome: " << nome << endl;
@@ -49,17 +59,20 @@ class Pessoa {
         }
 };//End Class
 
+//Definindo a classe Produto, que possui os atributos privados nome e preco
 class Produto {
     private: 
         string nome;
         double preco;
     
     public:
+        //Constructor da classe Produto, que inicializa os atributos com os valores passados como parâmetro
         Produto(string nome, double preco) {
             this->nome = nome;
             this->preco = preco;
         }
 
+        //Métodos setters e getters para cada atributo da classe Produto, permitindo a manipulação dos dados 'privados'
         void setNome(string nome) {
             this->nome = nome;
         }
@@ -76,10 +89,12 @@ class Produto {
             return preco;
         }
 
+        //Altera o preço do produto, com o valor passado como parâmetro
         void alterarPreco(double novoPreco) {
             setPreco(novoPreco);
         }
 
+        //Comprara o preco do produto com o preco de outro produto passado como parametro.
         void comparar(Produto outro) {
             if (this->preco > outro.preco) {
                 cout << this->nome << " é mais caro que " << outro.nome << endl;
@@ -91,6 +106,7 @@ class Produto {
         }
 };//End Class
 
+//Definindo a classe aluno, que possui os atributos privados nome, identificacao, tipo, notaFinal e notas
 class Aluno {
     private:
         string nome;
@@ -100,6 +116,8 @@ class Aluno {
         vector<double> notas;
 
     public:
+        //Constructor da classe Aluno, que inicializa os atributos com os valores passados como parâmetro
+        //Define o tipo como "Aluno UnB" e a notaFinal como 0.0 por padrão
         Aluno(string nome, string identificacao) {
             this->nome = nome;
             this->identificacao = identificacao;
@@ -107,6 +125,7 @@ class Aluno {
             this->notaFinal = 0.0;
         }
 
+        //Métodos setters e getters para cada atributo da classe Aluno, permitindo a manipulação dos dados 'privados'
         void setNome(string nome) {
             this->nome = nome;
         }
@@ -123,17 +142,20 @@ class Aluno {
             return identificacao;
         }
 
+        //Método que adiciona as notas do aluno no vetor de notas e calcula a média final
         void adicionarNotas(double nota1, double nota2) {
             this->notas.push_back(nota1);
             this->notas.push_back(nota2);
             this->notaFinal = (notas[0] + notas[1]) / 2;
         }
 
+        //Método que exibe todas as informações do aluno
         void imprime() {
             cout << "Nome: " << nome << endl;
             cout << "Identificacao: " << identificacao << endl;
             cout << "Tipo: " << tipo << endl;
             cout << "Nota Final: " << notaFinal << endl;
+            //Define a menção do aluno de acordo com a nota final
             if (notaFinal >= 9) {
                 cout << "SS" << endl;
             } else if (notaFinal >= 7) {
@@ -181,5 +203,5 @@ int main() {
     //Por fim exibe as informações do aluno, incluindo a menção de acordo com a média
     a1->imprime();
 
-    return 0;
+    return 0; //Fim do programa
 }
