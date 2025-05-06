@@ -3,6 +3,7 @@ Nome: Ruan Dias Alves Teixeira
 Matrícula: 242014471
 Questão: L01Q01
 */
+
 //Importa todas as bibliotecas necessárias para resolver a questão
 #include <iostream> //Biblioteca padrão para entrada e saída de dados 
 #include <string> //Biblioteca padrão para manipulação de strings
