@@ -7,7 +7,6 @@ Questão: L02Q01
 #include <iostream>
 #include <string>
 #include <vector>
-#include <locale>
 
 using namespace std; //Facilita o uso de comandos sem precisar colocar o namespace antes de cada um deles
 
@@ -130,8 +129,11 @@ class FormaGeometrica {
     protected:
         int base;
         int altura;
-
-        FormaGeometrica()
+        int lado;
+    public:
+        int calcularArea() {
+            base * altura;
+        }
 };
 
 //Definindo a classe Retangulo, que possui os atributos públicos base e altura
@@ -179,10 +181,9 @@ class Quadrado : FormaGeometrica {
     }
 
     double calcularArea() {}
-}
+};
 
 int main() {
-    setlocale(LC_ALL, "Portuguese");
 
     Aluno a1 = Aluno("Ruan", "242014471", 18, "Aluno de Redes");
     a1.adicionarNotas(9.0, 8.0);

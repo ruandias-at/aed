@@ -9,6 +9,7 @@ Questão: L01Q02
 #include <string> //Possibilita a Manipulação de strings
 #include <vector> //Possibilita a manipulação de vetores
 #include <locale> //Possibilita definir o local, para poder ter acesso aos caracteres especiais
+#include <fstream> //Possibilita a manipulação e leitura de arquivos
 
 using namespace std; //Facilita o uso de comandos sem precisar colocar o namespace antes de cada um deles
 
@@ -86,6 +87,50 @@ class Circulo {
     }
 }; //End Class
 
+//Classe aluno importada da questão 1
+class Aluno {
+    public:
+        string nome;
+        string identificacao;
+        string tipo;
+        double notaFinal;
+        vector<double> notas;
+
+    Aluno(string nome, string identificacao) {
+        this->nome = nome;
+        this->identificacao = identificacao;
+        this->tipo = "Aluno UnB";
+        this->notaFinal = 0.0;
+    }
+
+    void adicionarNotas(double nota1, double nota2, double nota3) {
+        this->notas.push_back(nota1);
+        this->notas.push_back(nota2);
+        this->notas.push_back(nota3);
+        this->notaFinal = (notas[0] + notas[1] + notas[2]) / 3;
+    }
+
+    void imprime() {
+        cout << "Nome: " << nome << endl;
+        cout << "Identificacao: " << identificacao << endl;
+        cout << "Tipo: " << tipo << endl;
+        cout << "Nota Final: " << notaFinal << endl;
+        if (notaFinal >= 9) {
+            cout << "SS" << endl;
+        } else if (notaFinal >= 7) {
+            cout << "MS" << endl;
+        } else if (notaFinal >= 5) {
+            cout << "MM" << endl;
+        } else if (notaFinal >= 3) {
+            cout << "MI" << endl;
+        } else if (notaFinal > 0) {
+            cout << "II" << endl;
+        } else {
+            cout << "SR" << endl;
+        }
+    }
+};//End Class
+
 //Função principal do programa
 int main() {
     setlocale(LC_ALL, "Portuguese"); //Define o local pra Português, permitindo o uso de caracteres especiais
@@ -121,5 +166,9 @@ int main() {
     cout << "Area do circulo: " << c1.calcularArea() << endl;
     cout << "Area do retangulo: " << r1.calcularArea() << endl;
 
+    fstream arquivo("alunos.csv", ios::out);
+    arquivo.open();
+
+    
     return 0; //Fim do programa
 }
