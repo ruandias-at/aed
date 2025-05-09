@@ -166,9 +166,45 @@ int main() {
     cout << "Area do circulo: " << c1.calcularArea() << endl;
     cout << "Area do retangulo: " << r1.calcularArea() << endl;
 
-    fstream arquivo("alunos.csv", ios::out);
-    arquivo.open();
+        // Salvar instâncias de Aluno no arquivo alunos.csv
+    ofstream saida("./L01/alunos.csv");
 
-    
+    if (!saida.is_open()) {
+        cerr << "Erro ao abrir o arquivo alunos.csv para escrita" << endl;
+        return 1;
+    }
+
+    // Escreve o cabeçalho
+    saida << "nome;matricula;nota1;nota2;nota3" << endl;
+
+    //Cria um vetor de objetos do tipo Aluno
+    vector<Aluno> alunos;
+
+    //Adiciona 4 instâncias da classe Aluno ao vetor alunos, e adiciona as notas de cada aluno
+    alunos.push_back(Aluno("Ruan Dias", "242014471"));
+    alunos[0].adicionarNotas(9.5, 8.0, 7.5);
+
+    alunos.push_back(Aluno("Maria Silva", "1111111111"));
+    alunos[1].adicionarNotas(6.0, 7.5, 8.0);
+
+    alunos.push_back(Aluno("João Santos", "2222222222"));
+    alunos[2].adicionarNotas(5.0, 4.5, 6.0);
+
+    alunos.push_back(Aluno("Ana Oliveira", "2323232323"));
+    alunos[3].adicionarNotas(10.0, 9.5, 9.0);
+
+    //Passa por cada item do vetor alunos
+    for (const auto& aluno : alunos) {
+        //Vai escrever no arquivo os dados de cada aluno separados por ';'
+        saida << aluno.nome << ";" 
+                << aluno.identificacao << ";"
+                << aluno.notas[0] << ";" 
+                << aluno.notas[1] << ";" 
+                << aluno.notas[2] << endl;
+    }
+
+    //Fecha o arquivo
+    saida.close();
+
     return 0; //Fim do programa
 }
