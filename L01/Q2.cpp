@@ -48,6 +48,8 @@ class Carro {
         cout << "Modelo: " << modelo << endl;
         cout << "Ano: " << ano << endl;
         cout << "Velocidade: " << velocidade << " km/h." << endl;
+        cout << "------------------------" << endl;
+
     }
 }; //End Class
 
@@ -146,7 +148,6 @@ int main() {
     //Laço de repetição que vai passar por todos os itens do vetor carros
     for (int i = 0; i < carros.size(); i++) {
         carros[i].exibirInfo(); //Chama o método que exibe as informações do carro
-        cout << "------------------------" << endl;
     }
 
     //Acelera o carro e depois exibe as informações do carro
