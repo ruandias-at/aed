@@ -9,6 +9,7 @@ Questão: L02Q03
 #include <string>
 #include <locale>
 #include <fstream>
+#include <vector>
 
 using namespace std;
 
@@ -21,12 +22,64 @@ Já a sobreposição é basicamente o conceito de uma classe filha redefinir um méto
 */
 
 class Complexo {
+    private:
+        double real, imag;
 
+    public:
+        Complexo(double real, double imag) {
+            this->real = real;
+            this->imag = imag;
+        }
+
+        // Operador soma
+        Complexo operator+(Complexo c) {
+            return Complexo(real + c.real, imag + c.imag);
+        }
+
+        // Operador subtração
+        Complexo operator-(Complexo c) {
+            return Complexo(real - c.real, imag - c.imag);
+        }
+
+        // Operador multiplicação
+        Complexo operator*(Complexo c) {
+            double r = real * c.real - imag * c.imag;
+            double i = real * c.imag + imag * c.real;
+            return Complexo(r, i);
+        }
+
+        void imprimir() const {
+            cout << real << (imag >= 0 ? "+" : "") << imag << "i";
+        }
 };
 
+// Classe Matriz2x2
 class Matriz2x2 {
+    private:
+        int mat[2][2];
 
+    public:
+        Matriz2x2(int p1x1, int p1x2, int p2x1, int p2x2) {
+            mat[0][0] = p1x1; mat[0][1] = p1x2;
+            mat[1][0] = p2x1; mat[1][1] = p2x2;
+        }
+
+        // Operador multiplicação
+        Matriz2x2 operator*(Matriz2x2 m) {
+            return Matriz2x2(
+                mat[0][0]*m.mat[0][0] + mat[0][1]*m.mat[1][0],
+                mat[0][0]*m.mat[0][1] + mat[0][1]*m.mat[1][1],
+                mat[1][0]*m.mat[0][0] + mat[1][1]*m.mat[1][0],
+                mat[1][0]*m.mat[0][1] + mat[1][1]*m.mat[1][1]
+            );
+        }
+
+        void imprimir() {
+            cout << "[" << mat[0][0] << " " << mat[0][1] << "]\n"
+                << "[" << mat[1][0] << " " << mat[1][1] << "]\n";
+        }
 };
+
 
 //Classe livro copiada da questão anterior com alguns ajustes
 class Livro {
@@ -70,15 +123,13 @@ class Livro {
         }
 
         //Método que imprime as informações do objeto no console
-        void imprime() {
-            cout << "Título: " << titulo << endl;
-            cout << "Autor: " << autor << endl;
-            cout << "Número de páginas: " << numPaginas << endl;
+        string imprime() {
+            return "Título: " + titulo + "\nAutor: " + autor + "\nNúmero de páginas: " + to_string(numPaginas) + "\n---------------------------";
         }
 
         //Sobrecarga do método imprime para imprimir em um arquivo csv
-        void imprime(string form) {
-            cout << titulo << ";" << autor << ";" << numPaginas << endl;
+        string imprime(string form) {
+            return titulo + ";" + autor + ";" + to_string(numPaginas) + "\n";
         }
 }; //End Class
 
@@ -115,8 +166,36 @@ int main() {
     setlocale(LC_ALL, "Portuguese"); //Definição de local para aceitar caracteres especiais
 
 
+    ofstream saida("./L02/livros.csv");
 
+    if (!saida.is_open()) {
+        cerr << "Erro ao abrir o arquivo livros.csv para escrita" << endl;
+        return 1;
+    }
 
+    // Escreve o cabeçalho
+    saida << "Título;Autor;Núm. de Páginas;" << endl;
+
+    Livro livro1("Harry Potter", "J.K. Rowling", 223);
+    Livro livro2("Código Limpo", "Robert C. Martin", 464);
+    Livro livro3("Os miseráveis", "Victor Hugo", 1234);
+
+    saida << livro1.imprime("csv") << livro2.imprime("csv") << livro3.imprime("csv");
+
+    //Imprime os livros no console
+    cout << livro1.imprime() << endl;
+    cout << livro2.imprime() << endl;
+    cout << livro3.imprime() << endl;
+    //Fecha o arquivo
+    saida.close();
     
+
+    Circulo circulo1(4.1);
+    Circulo circulo2(10);
+
+    cout << "Área do círculo 1: " << circulo1.calcularArea() << endl;
+    cout << "Área do círculo 2: " << circulo2.calcularArea() << endl;
+    cout << "-----------------------------" << endl;
+
     return 0;//Fim do programa
 }
