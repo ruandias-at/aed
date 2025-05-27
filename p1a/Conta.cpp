@@ -40,5 +40,6 @@ bool Conta::gastar(int valor) {
         return false;
     } else {
         cout << "Saldo insuficiente." << endl;
+        return false;
     }
 }
