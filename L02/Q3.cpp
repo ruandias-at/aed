@@ -165,9 +165,42 @@ int main() {
 
     setlocale(LC_ALL, "Portuguese"); //Definição de local para aceitar caracteres especiais
 
+    // Criando instâncias de Complexo
+    Complexo c1(3, 4);
+    Complexo c2(1, 2);
 
+    // Realizando operações
+    Complexo soma = c1 + c2;
+    Complexo subtracao = c1 - c2;
+    Complexo multiplicacao = c1 * c2;
+
+    // Imprimindo resultados
+    cout << "Soma: ";
+    soma.imprimir();
+    cout << "\nSubtração: ";
+    subtracao.imprimir();
+    cout << "\nMultiplicação: ";
+    multiplicacao.imprimir();
+
+    cout << endl << "-----------------------------" << endl;
+
+    // Criando instâncias de Matriz2x2
+    Matriz2x2 m1(1, 2, 3, 4);
+    Matriz2x2 m2(5, 6, 7, 8);
+
+    // Realizando multiplicação de matrizes
+    Matriz2x2 resultado = m1 * m2;
+
+    // Imprimindo resultado da multiplicação de matrizes
+    cout << "Resultado da multiplicação de matrizes:\n";
+    resultado.imprimir();
+
+    cout << "-----------------------------" << endl;
+
+    // Abrindo o arquivo livros.csv para escrita
     ofstream saida("./L02/livros.csv");
 
+    // Verifica se o arquivo foi aberto corretamente
     if (!saida.is_open()) {
         cerr << "Erro ao abrir o arquivo livros.csv para escrita" << endl;
         return 1;
@@ -176,6 +209,7 @@ int main() {
     // Escreve o cabeçalho
     saida << "Título;Autor;Núm. de Páginas;" << endl;
 
+    // Cria instâncias de Livro e escreve no arquivo
     Livro livro1("Harry Potter", "J.K. Rowling", 223);
     Livro livro2("Código Limpo", "Robert C. Martin", 464);
     Livro livro3("Os miseráveis", "Victor Hugo", 1234);
@@ -186,13 +220,15 @@ int main() {
     cout << livro1.imprime() << endl;
     cout << livro2.imprime() << endl;
     cout << livro3.imprime() << endl;
+
     //Fecha o arquivo
     saida.close();
     
-
+    // Criação de instâncias da classe Circulo uma com parâmetro raio e outra diâmetro
     Circulo circulo1(4.1);
     Circulo circulo2(10);
 
+    // Exibindo a área dos círculos
     cout << "Área do círculo 1: " << circulo1.calcularArea() << endl;
     cout << "Área do círculo 2: " << circulo2.calcularArea() << endl;
     cout << "-----------------------------" << endl;
