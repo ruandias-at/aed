@@ -1,7 +1,7 @@
 #include "Grafo.h"
 
 int main() {
-    cout << "=== EXEMPLO 1: Grafo construído por matriz ===" << endl;
+    cout << "=== QUESTÃO 1: Grafo construído por matriz ===" << endl;
     
     vector<vector<int>> matriz = {
         {0, 5, 0, 8, 0},
