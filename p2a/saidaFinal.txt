@@ -1,0 +1,76 @@
+=== QUESTAO A: ===
+Tamanho do grafo: 6
+Cardinalidade de vertices: 6
+Cardinalidade de arestas: 9 
+Grau do vertice 'C': 4      
+Diferenca V-A: -3
+Eh conexo: Sim
+Eh arvore: Nao
+Eh anel: Nao
+Eh estrela: Nao
+Eh totalmente conexo: Nao   
+
+--- Algoritmo de Dijkstra (origem A) ---
+Distancia de A para A: 0
+Distancia de A para B: 1
+Distancia de A para C: 5
+Distancia de A para D: 14
+Distancia de A para E: 12
+Distancia de A para F: 10
+
+--- Arvore Geradora Minima (Prim) ---
+A - B (peso: 1)
+A - C (peso: 5)
+C - E (peso: 7)
+E - D (peso: 3)
+Peso total da MST (Prim): 16
+
+--- Arvore Geradora Minima (Kruskal) ---
+A - B (peso: 1)
+D - E (peso: 3)
+A - C (peso: 5)
+C - E (peso: 7)
+E - F (peso: 9)
+Peso total da MST (Kruskal): 25
+
+========================
+=== QUESTAO B: ===
+Tamanho do grafo: 8
+Cardinalidade de vertices: 8
+Cardinalidade de arestas: 10
+Grau do vertice 'C': 3
+Diferenca V-A: -2
+Eh conexo: Sim
+Eh arvore: Nao
+Eh anel: Nao
+Eh estrela: Nao
+Eh totalmente conexo: Nao
+
+--- Algoritmo de Dijkstra (origem A) ---
+Distancia de A para A: 0
+Distancia de A para B: 10
+Distancia de A para C: 25
+Distancia de A para D: 50
+Distancia de A para E: 22
+Distancia de A para F: 15
+Distancia de A para G: 24
+Distancia de A para H: 42
+
+--- Arvore Geradora Minima (Prim) ---
+A - B (peso: 10)
+B - F (peso: 5)
+F - E (peso: 7)
+F - G (peso: 9)
+G - C (peso: 13)
+G - H (peso: 18)
+Peso total da MST (Prim): 62
+
+--- Arvore Geradora Minima (Kruskal) ---
+B - F (peso: 5)
+E - F (peso: 7)
+F - G (peso: 9)
+A - B (peso: 10)
+C - G (peso: 13)
+G - H (peso: 18)
+D - H (peso: 22)
+Peso total da MST (Kruskal): 84

@@ -1,3 +1,11 @@
+/*
+Aluno: Ruan Dias Alves Teixeira
+Matrícula: 242014471
+Algoritmo e Estrutura de Dados
+Prova 2 Parte A
+Data: 22/07/2025
+*/
+
 #include "Grafo.h"
 
 int main() {
